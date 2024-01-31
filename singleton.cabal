@@ -1,0 +1,48 @@
+cabal-version:      3.0
+name:               singleton
+version:            0.1.0.0
+synopsis:           Proof-of-concept implementation for a proposed top-level mutable state API.
+description:        This package provides a sample implementation for the Singleton API, which
+                    saves the results of certain IO actions to be global in the process.
+                    In particular, by saving the result of newIORef, we can achieve top-level
+                    mutable state.
+license:            Apache-2.0
+license-file:       LICENSE
+author:             Nathan Poje
+maintainer:         circuitcr4ft@gmail.com
+copyright:          Copyright (C) 2024 Nathan Poje
+category:           Control
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+
+common warnings
+    ghc-options: -Wall
+
+library
+    import:           warnings
+    exposed-modules:  Control.Singleton
+    -- other-modules:
+    other-extensions:
+        LambdaCase,
+        ScopedTypeVariables
+    build-depends:
+        base ^>=4.17.2.1,
+        focus,
+        stm,
+        stm-containers
+    hs-source-dirs:   src
+    default-language: Haskell2010
+
+test-suite singleton-test
+    import:           warnings
+    default-language: Haskell2010
+    other-modules:    Unique
+    other-extensions: TupleSections
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    main-is:          Main.hs
+    build-depends:
+        base ^>=4.17.2.1,
+        singleton,
+        extra,
+        hspec

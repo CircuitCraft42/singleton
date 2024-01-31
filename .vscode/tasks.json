@@ -1,0 +1,21 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "cabal build",
+            "type": "process",
+            "command": "cabal",
+            "args": ["build"],
+            "isBuildCommand": true
+        },
+        {
+            "label": "cabal test",
+            "type": "process",
+            "command": "cabal",
+            "args": ["test"],
+            "isTestCommand": true
+        }
+    ]
+}
